@@ -24,7 +24,8 @@ print("-"*80)
 
 #starting menu
 while True:
-	print("\n 1. Anime Airing today \n 2. Top Anime \n 3. Search for Anime \n 4. Exit")
+	print("\n 1. Anime Airing today \n 2. Top Anime \n 3. Search for Anime \n 4. Get Anime List") 
+	print("100. Exit\n")
 	choice = int(input("Enter your choice: "))
 	if choice == 1:
 		#getting dict
@@ -78,7 +79,21 @@ while True:
 			count+=1
 
 
+	#anime list
 	elif choice == 4:
+		user = input("\nEnter Username: ");
+		
+		#getting list
+		userinfo = jikan.user(username = user, request = 'animelist');
+
+		#printing
+		for items in userinfo['anime']:
+			print("\nTitle: ", items['title'])
+			print("Your Score: ", items['score'])			
+			print("Total Episodes: ", items['total_episodes'])
+			print("Watched Episodes: ", items['watched_episodes'])
+
+	elif choice == 100:
 		break
 	else:
 		print("\nInvalid choice, please enter again.")
